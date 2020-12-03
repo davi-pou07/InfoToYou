@@ -1,0 +1,22 @@
+<div class="container">
+    <hr>
+    <h1>Procedimetos</h1>
+    <hr>
+    <! -- Botão que leva ao forum.ejs -->
+        <br>
+        <! --percorrer o arrey do banco (formato que o banco tras os dados) -->
+            <%procedimentos.forEach(procedimentos=>{%>
+            <br>
+            <! -- card para organizar em quadros (bootstrap) -->
+                <div class="card">
+                    <div class="card-body">
+                        <! -- tras o titulo da pergunta-->
+                            <h3><%=procedimentos.proc_titulo%></h3>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/operacao/<%=procedimentos.id%>"><button class="btn btn-success">Vizualizar</button></a>
+                    </div>
+                </div>
+                <%})%>
+</div>
+</body>

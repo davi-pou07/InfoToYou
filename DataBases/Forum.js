@@ -3,7 +3,7 @@
 const Sequelize= require("sequelize")
 const connection = require("./databases")
 //Criando tabela pergunta
-const Info= connection.define('info',{ 
+const Forum= connection.define('forum',{ 
 
     titulo:{
         type: Sequelize.STRING,
@@ -14,11 +14,12 @@ const Info= connection.define('info',{
        allowNull:false
    }
 })
+
 //criar tabela no banco
 //Não vai forãr criação da tabela caso ja exista
 
-Info.sync({force: false}).then(()=>{
+Forum.sync({force: false}).then(()=>{
     console.log("Tabela criada")
 })
-//exportando model
-module.exports = Info
+
+module.exports = Forum

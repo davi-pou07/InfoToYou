@@ -1,0 +1,24 @@
+
+<div class="container">
+    <hr>
+    <h1>Perguntas</h1>
+    <hr>
+    <! -- Botão que leva ao forum.ejs -->
+        <a href="/forum" class="btn btn-primary">Perguntar</a>
+        <br>
+        <! --percorrer o arrey do banco (formato que o banco tras os dados) -->
+            <%forum_aberto.forEach(forum_aberto=>{%>
+            <br>
+            <! -- card para organizar em quadros (bootstrap) -->
+                <div class="card">
+                    <div class="card-body">
+                        <! -- tras o titulo da pergunta-->
+                            <h3><%=forum_aberto.titulo%></h3>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/requisicao/<%=forum_aberto.id%>"><button class="btn btn-success">Responder</button></a>
+                    </div>
+                </div>
+                <%})%>
+</div>
+</body>

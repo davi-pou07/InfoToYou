@@ -6,7 +6,7 @@ const bodyParser=require("body-parser")
 //Exportando conexão
 const connection = require('./DataBases/databases')
 //exportando model de ciração de tabelos no banco
-const Info = require("./DataBases/Info")
+const Forum = require("./DataBases/Forum")
 //databases
 connection
     .authenticate()
@@ -16,7 +16,16 @@ connection
     .catch((msgErro)=>{
         console.log(msgErro)
     })
-
+const Procedimento = require("./DataBases/Procedimentos")
+//databases
+connection
+    .authenticate()
+    .then(()=>{
+        console.log("Conexão feita com sucesso")
+    })
+    .catch((msgErro)=>{
+        console.log(msgErro)
+    })
 //usar o EJS como view engine | renderizador de html
 app.set('view engine','ejs')
 //Carregamento de arquivos estaticos no express
@@ -29,22 +38,81 @@ app.use(bodyParser.json())
 app.get("/",(req,res)=>{
     //Informa variavéis que irão ser apresentadas no inde   
         res.render("index");
-    
 })
 
-//Rota do BANCO
+//Rota do BANCO forum
+app.get("/forum",(req,res)=>{
+    res.render("forum")
+})
+
 app.post("/save",(req,res)=>{
     titulo=req.body.titulo
     descricao=req.body.descricao //Inserir dados a tabela -> insert into pergunta titulo, descrição (xxx,xxx)
-    
-    Info.create({
+    Forum.create({
         titulo:titulo,
         descricao:descricao
         //Apos receber os dadso usuario sera redirecionado a pagina inicial
     }).then(() => {
-        res.redirect("/teste");
+        res.redirect("/forum_aberto");
     });
 })
+
+app.get("/forum_aberto",(req,res)=>{
+    Forum.findAll({
+        raw:true,order:[
+            ['id','DESC']
+        ]
+}).then(forum_aberto => {
+    res.render('forum_aberto',{
+        forum_aberto:forum_aberto
+    })
+}) 
+})
+
+app.get("/requisicao/:id",(req,res)=>{
+    var id = req.params.id
+
+    Forum.findOne({
+        where: {id:id}
+    }).then(requisicao =>{
+        res.render("requisicao",{
+            requisicao:requisicao
+        })
+        
+    })
+})
+
+//procedimentos
+
+app.get("/procedimentos",(req,res)=>{
+    Procedimento.findAll({
+        raw:true,order:[
+            ['id','DESC']
+        ]
+    }).then(procedimentos =>{
+        res.render("procedimentos",{
+            procedimentos:procedimentos
+        })
+    })
+    
+})
+
+app.get("/operacao/:id",(req,res) => {
+    var id = req.params.id
+
+    Procedimento.findOne({
+        where:{id:id}
+    }).then(procedimentos=>{
+        if(procedimentos != undefined){
+            res.render("operacao",{
+            procedimentos:procedimentos
+        })
+        }else{
+            res.redirect('/forum')
+        }
+    })
+})
+
 app.listen(8080,()=>{
     console.log("Servidor rodando!")
 })
