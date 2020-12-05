@@ -7,6 +7,7 @@ const bodyParser=require("body-parser")
 const connection = require('./DataBases/databases')
 //exportando model de ciração de tabelos no banco
 const Forum = require("./DataBases/Forum")
+const Resposta = require("./DataBases/Resposta")
 //databases
 connection
     .authenticate()
@@ -57,6 +58,19 @@ app.post("/save",(req,res)=>{
     });
 })
 
+//Rotas banco Resposta
+
+app.post("/responder",(req,res)=>{
+    var corpo = req.body.corpo
+    var perguntaId = req.body.resposta
+    Resposta.create({
+        corpo:corpo,
+        perguntaId:perguntaId
+    }).then(()=>{
+        res.redirect("/resposta/"+perguntaId)
+    })
+})
+
 app.get("/forum_aberto",(req,res)=>{
     Forum.findAll({
         raw:true,order:[
@@ -69,18 +83,19 @@ app.get("/forum_aberto",(req,res)=>{
 }) 
 })
 
-app.get("/requisicao/:id",(req,res)=>{
+app.get("/resposta/:id",(req,res)=>{
     var id = req.params.id
 
     Forum.findOne({
         where: {id:id}
-    }).then(requisicao =>{
-        res.render("requisicao",{
-            requisicao:requisicao
+    }).then(resposta =>{
+        res.render("resposta",{
+            resposta:resposta
         })
         
     })
 })
+
 
 //procedimentos
 

@@ -19,7 +19,7 @@ const Forum= connection.define('forum',{
 //Não vai forãr criação da tabela caso ja exista
 
 Forum.sync({force: false}).then(()=>{
-    console.log("Tabela criada")
+    console.log("Tabela Forum ok")
 })
 
 module.exports = Forum

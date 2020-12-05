@@ -14,7 +14,7 @@ const Procedimento=connection.define('procedimento',{
     }
 })
 Procedimento.sync({force: false}).then(()=>{
-    console.log("Tabela criada manow")
+    console.log("Tabela Procedimento ok")
 })
 
 module.exports = Procedimento
