@@ -1,18 +1,30 @@
 <%- include('../public/partials/header.ejs') %>
 
 <body>
+    <%- include('../public/partials/nav.ejs') %>
     <div class="container">
-    <hr>
-    <h1><%=resposta.titulo%></h1>
-    <p><%=resposta.descricao%></p>
-    <hr>
-    <form method="POST" action="/responder">
-        <h3>Responda</h3>
+        <hr>
+        <h1><%=forum_aberto.titulo%></h1>
+        <p><%=forum_aberto.descricao%></p>
+        <hr>
+        <form method="POST" action="/responder">
+            <h3>Responda</h3>
+            <br>
+            <textarea placeholder="Digite sua resposta" class="form-control" name="corpo"></textarea><br>
+            <input type="hidden" name="resposta" value="<%=forum_aberto.id%>">
+            <!--hidden Significa escondido-->
+            <button type="submit" class="btn btn-primary">Responder</button>
+        </form>
+      <hr>
+      <h3>Respostas:</h3>
+      <%resposta.forEach(resposta=>{%>    
         <br>
-        <textarea placeholder="Digite sua resposta" class="form-control" name="corpo"></textarea><br>
-        <input type="hidden" name="resposta" value="<%=resposta.id%>"> <!--hidden Significa escondido-->
-        <button type="submit" class="btn btn-primary">Responder</button>
-    </form>
-</div>
+        <div class="card">
+            <div class="card-body">
+                <p> <%= resposta.corpo %></p>
+            </div>
+        </div>
+        <%})%>
+      <hr>
+    </div>
 </body>
-<%- include('../public/partials/footer.ejs') %>

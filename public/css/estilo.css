@@ -1,0 +1,137 @@
+#home{
+    background: #0081bc;
+    color: white;
+}
+#home2{
+   width: 100%;
+   margin-right: none;
+   margin-left: none;
+}
+.caixa{
+   padding: 60px 0;
+   border-bottom: 1px solid #e5e5e5; 
+}
+#colunas {
+   border-bottom: none;
+}
+nav {
+   background: #0081bc;
+   color: white;
+}
+.navbar-dark .navbar-nav .nav-link {
+   color: white;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+   color: black;
+   background: white;
+   border-radius: 4px;
+}
+
+.borda1{
+   border-radius: 20px 0 0 20px;
+}
+.borda2{
+   border-radius: 0 20px 20px 0;
+}
+.tres-colunas{
+   background: #0081bc;
+   text-align: center;
+   color: white;
+}
+.coluna-diferente{
+   background: #84b4e847;
+   text-align: center;
+}
+.botao{
+   background: #0081bc;
+   color: white;
+}
+.botao-cadastre:hover{
+   background: #195da7;
+}
+.botao:hover{
+   background: #195da7;
+}
+footer {
+   background: #0081bc;
+   color: white;
+}
+.text-carousel {
+   text-align: center;
+}
+.backguia{
+   background: #2125298c;
+}
+.pginicial{
+   background: #84b4e847;
+   border-radius: 10px;
+   text-align: center; 
+}
+h2 .pginicial{
+   background: #84b4e847;
+}
+.enfase{
+   background: #0081bc;
+   text-align: center;
+   color: white;
+   border-radius: 10px;
+   animation: animacao-caixa 5s 2s 50;
+
+   -webkit-animation: animacao-caixa 5s 2s 50;
+   -moz-animation: animacao-caixa 5s 2s 50;
+   -o-animation: animacao-caixa 5s 2s 50;
+
+}
+h2 .enfase{
+   background: #0081bc;
+   color: white;
+}
+
+/*animação****/
+
+@keyframes animacao-caixa{
+   from{
+       background: #0081bc;
+   }
+   to{
+       background: red;
+       border-radius: 10px;
+   }
+}
+@-webkit-keyframes animacao-caixa{
+   from{background: #0081bc;}
+   to{background: red;border-radius: 10px;}
+}
+@-moz-keyframes animacao-caixa{
+   from{background: #0081bc;}
+   to{background: red;border-radius: 10px;
+   }
+}
+@-o-keyframes animacao-caixa{
+   from{background: #0081bc;}
+   to{background: red;border-radius: 10px;}
+}
+
+
+/* DAVI */
+
+/* Titulo ptocrdimento*/
+
+#titulo-pro{
+   background-color: #0081bc;
+   color: white;
+   border-radius: 20px;
+   text-align: center;
+}
+#card-pro{
+   background-color: #84b4e847;
+}
+
+.perguntar{
+   text-align: center;
+}
+
+#h4r{
+   margin-bottom: 30px;
+   margin-top: 30px;
+}

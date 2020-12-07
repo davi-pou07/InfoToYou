@@ -41,6 +41,14 @@ app.get("/",(req,res)=>{
         res.render("index");
 })
 
+app.get("/comunicados",(req,res)=>{
+    res.render('comunicados.ejs')
+})
+
+app.get("/guiadoiniciante",(req,res)=>{
+    res.render('guiadoiniciante.ejs')
+})
+
 //Rota do BANCO forum
 app.get("/forum",(req,res)=>{
     res.render("forum")
@@ -67,7 +75,7 @@ app.post("/responder",(req,res)=>{
         corpo:corpo,
         perguntaId:perguntaId
     }).then(()=>{
-        res.redirect("/resposta/"+perguntaId)
+        res.redirect("/forum_aberto/"+perguntaId)
     })
 })
 
@@ -83,16 +91,22 @@ app.get("/forum_aberto",(req,res)=>{
 }) 
 })
 
-app.get("/resposta/:id",(req,res)=>{
+app.get("/forum_aberto/:id",(req,res)=>{
     var id = req.params.id
-
     Forum.findOne({
         where: {id:id}
-    }).then(resposta =>{
+    }).then(forum_aberto =>{
+        Resposta.findAll({
+            where:{perguntaId:forum_aberto.id},
+            order:[
+                ['Id','DESC']
+            ]
+        }).then(resposta =>{
         res.render("resposta",{
+            forum_aberto:forum_aberto,
             resposta:resposta
         })
-        
+    }) 
     })
 })
 

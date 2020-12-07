@@ -1,24 +1,32 @@
+<%- include('../public/partials/header.ejs') %>
 
-<div class="container">
-    <hr>
-    <h1>Perguntas</h1>
-    <hr>
-    <! -- Botão que leva ao forum.ejs -->
-        <a href="/forum" class="btn btn-primary">Perguntar</a>
-        <br>
-        <! --percorrer o arrey do banco (formato que o banco tras os dados) -->
-            <%forum_aberto.forEach(forum_aberto=>{%>
+<body>
+    <%- include('../public/partials/nav.ejs') %>
+    <div class="container">
+        <div id="titulo-pro">
+        <hr>
+        <h1>Bem vindo ao Forum!</h1>
+        <hr>
+    </div>
+        <! -- Botão que leva ao forum.ejs -->
+        <div class="perguntar"> 
+            <h4 id="h4r">Informe uma Pergunta/Alteração referente a alguma Informação/Procedimento do site</h4>
+            <a href="/forum" class="btn btn-danger" >Perguntar</a>
+        </div>
             <br>
-            <! -- card para organizar em quadros (bootstrap) -->
-                <div class="card">
-                    <div class="card-body">
-                        <! -- tras o titulo da pergunta-->
-                            <h3><%=forum_aberto.titulo%></h3>
+            <! --percorrer o arrey do banco (formato que o banco tras os dados) -->
+                <%forum_aberto.forEach(forum_aberto=>{%>
+                <br>
+                <! -- card para organizar em quadros (bootstrap) -->
+                    <div class="card">
+                        <div class="card-body" id="card-pro">
+                            <! -- tras o titulo da pergunta-->
+                                <h4><%=forum_aberto.titulo%></h4>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/forum_aberto/<%=forum_aberto.id%>"><button
+                                    class="btn botao">Responder</button></a>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <a href="/pergunta/<%=forum_aberto.id%>"><button class="btn btn-success">Responder</button></a>
-                    </div>
-                </div>
-                <%})%>
-</div>
-</body>
+                    <%})%>
+    </div>
