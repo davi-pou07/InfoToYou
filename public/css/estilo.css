@@ -38,9 +38,15 @@ nav {
    text-align: center;
    color: white;
 }
+.tres-colunas:hover{
+	background: #195da7;
+}
 .coluna-diferente{
-   background: #84b4e847;
+   background: #ffffff;
    text-align: center;
+}
+.coluna-diferente:hover {
+	background: #195da7;
 }
 .botao{
    background: #0081bc;
