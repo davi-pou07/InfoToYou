@@ -56,10 +56,12 @@ app.get("/forum",(req,res)=>{
 
 app.post("/save",(req,res)=>{
     titulo=req.body.titulo
+    idOp = 0
     descricao=req.body.descricao //Inserir dados a tabela -> insert into pergunta titulo, descrição (xxx,xxx)
     Forum.create({
         titulo:titulo,
-        descricao:descricao
+        descricao:descricao,
+        idOp:idOp
         //Apos receber os dadso usuario sera redirecionado a pagina inicial
     }).then(() => {
         res.redirect("/forum_aberto");
@@ -112,6 +114,41 @@ app.get("/forum_aberto/:id",(req,res)=>{
 
 
 //procedimentos
+
+app.post('/save_op',(req,res)=>{
+    titulo=req.body.titulo
+    idOp = req.body.resposta
+    descricao = req.body.descricao
+
+    Forum.create({
+        titulo:titulo,
+        descricao:descricao,
+        idOp:idOp
+    }).then(()=>{
+        res.redirect("/forum_aberto")
+    })
+})
+
+
+app.get("/forum_operacao/:id",(req,res)=>{
+    var id = req.params.id
+    Procedimento.findOne({
+        where: {id:id}
+    }).then(procedimento =>{
+       /* Forum.findAll({
+            where:{opId:procedimento.id},
+            order:[
+                ['Id','DESC']
+            ]
+        }).then(forum_operacao =>{*/
+        res.render("forum_operacao",{
+            procedimento:procedimento
+            //forum_operacao:forum_operacao
+        })
+    }) 
+    })
+//})
+
 
 app.get("/procedimentos",(req,res)=>{
     Procedimento.findAll({

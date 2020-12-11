@@ -1,95 +1,142 @@
 <%- include('../public/partials/header.ejs') %>
+
 <body>
-    <%- include('../public/partials/nav.ejs') %>
-    <section id="home">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 d-flex"> <!-- inicio da seção do texto -->
-              <div class="align-self-center">
-                <h1 class="display-4">Melhorando seu desempenho!</h1>
-                <p>
-                  O InfoToYou é uma ferramenta online utilizada por todos os colaboradores da NextCompany, afim de maximizar o desempenho de seus funcionários...
-                </p>
-    
-                <form class="mt-4 mb-4">
-                  <div class="input-group input-group-lg">
-                    <input type="text" placeholder="Seu e-mail" class="form-control">
-                    <div class="input-group-append">
-                      <button type="button" class="btn btn-primary botao-cadastre">
-                        Cadastre-se
-                      </button>
-                    </div>
-                  </div>
-                </form>
+  <%- include('../public/partials/nav.ejs') %>
+  <section id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex">
+          <!-- inicio da seção do texto -->
+          <div class="align-self-center">
+            <h1 class="display-4">Melhorando seu desempenho!</h1>
+            <p>
+              O InfoToYou é uma ferramenta online utilizada por todos os colaboradores da NextCompany, afim de maximizar
+              o desempenho de seus funcionários...
+            </p>
+
+            <form class="mt-4 mb-4">
+              <div class="input-group input-group-lg">
+                <input type="text" placeholder="Seu e-mail" class="form-control">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-primary botao-cadastre">
+                    Cadastre-se
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 d-none d-md-block"><!-- fim da seção texto -->
-              <img src="/img/capa-mulher.png">
-            </div>
+            </form>
           </div>
         </div>
-      </section> <!-- fim da home-->
-    
-      <section class="caixa"> <!-- inicio da seção comunicados-->
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 d-flex">
-              <div class="align-self-center">
-                <h2 class="pginicial pt-2 pb-2 pl-4 pr-4">Comunicados InfoCompany  </h2>
-                <p>Fique por dentro das novidades da empresa...</p>
-                <a href="/comunicados" class="btn btn-primary botao">Veja mais</a>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <img src="/img/informativo.jpg" class="img-fluid">
-            </div>
+        <div class="col-md-6 d-none d-md-block">
+          <!-- fim da seção texto -->
+          <img src="/img/capa-mulher.png">
+        </div>
+      </div>
+    </div>
+  </section> <!-- fim da home-->
+
+  <!-- jquery -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- bootstrap -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- chamada da função -->
+<script type="text/javascript">
+$(window).load(function() {
+    $('#exemplomodal').modal('show');
+});
+</script>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <section class="caixa">
+    <!-- inicio da seção comunicados-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex">
+          <div class="align-self-center">
+            <h2 class="pginicial pt-2 pb-2 pl-4 pr-4">Comunicados InfoCompany </h2>
+            <p>Fique por dentro das novidades da empresa...</p>
+            <a href="/comunicados" class="btn btn-primary botao">Veja mais</a>
           </div>
         </div>
-      </section> <!-- fim da seção comunicados-->
-    
-       <section class="caixa"> <!-- inicio da seção iniciante-->
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <img src="/img/iniciante.jpg" class="img-fluid">
-            </div>
-            <div class="col-md-6 d-flex">
-              <div class="align-self-center">
-                <h2 class="pginicial pt-2 pb-2">Seja bem vindo, novo colaborador! </h2>
-                <p>Aqui você irá conhecer como funciona nossa empresa, todos os departamenos e as suas funcionalidades, seu contrato, direitos e deveres...</p>
-                <a href="/guiadoiniciante" class="btn btn-primary botao">Veja mais</a>
-              </div>
-            </div>
+        <div class="col-md-6">
+          <img src="/img/informativo.jpg" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section> <!-- fim da seção comunicados-->
+
+  <section class="caixa">
+    <!-- inicio da seção iniciante-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/img/iniciante.jpg" class="img-fluid">
+        </div>
+        <div class="col-md-6 d-flex">
+          <div class="align-self-center">
+            <h2 class="pginicial pt-2 pb-2">Seja bem vindo, novo colaborador! </h2>
+            <p>Aqui você irá conhecer como funciona nossa empresa, todos os departamenos e as suas funcionalidades, seu
+              contrato, direitos e deveres...</p>
+            <a href="/guiadoiniciante" class="btn btn-primary botao">Veja mais</a>
           </div>
         </div>
-      </section> <!-- fim da seção iniciante-->
-    
-       <section class="caixa" id="colunas"> <!-- inicio da seção 3 colunas-->
-        <div class="container">
-          <div class="row">
-           <div class="col-md-4 mt-4 mb-4 pt-2 borda1 tres-colunas">
-             <a href="/">
+      </div>
+    </div>
+  </section> <!-- fim da seção iniciante-->
+
+  <section class="caixa" id="colunas">
+    <!-- inicio da seção 3 colunas-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mt-4 mb-4 pt-2 borda1 tres-colunas">
+          <a href="/">
             <img src="/img/suporte4.png" class="img-fluid">
           </a>
-             <h4 class="pt-4">Fale com o Suporte</h4>
-             <p>Aqui você irá ser atendido por algum colaborador do suporte. </p>
-           </div>
-            <div class="col-md-4 mt-4 mb-4 coluna-diferente">
-              <a href="/procedimentos">
-              <img src="/img/procedimentos2.jpg" class="img-fluid">
-            </a>
-             <h4 class="pt-4">Procedimentos do suporte</h4>
-             <p>Aqui você irá tirar dúvidas sobre os procedimentos e em quais circustâncias.</p>
-           </div>
-            <div class="col-md-4 mt-4 mb-4 pt-2 borda2 tres-colunas">
-              <a href="/forum_aberto">
-              <img src="/img/apoio3.png" class="img-fluid">
-            </a>
-             <h4 class="pt-4">Forum</h4>
-             <p>Aqui permite a sua colaboração para InfoToYou, permitindo a troca de conhecimentos sobre os procedimentos do suporte.</p>
-           </div>
-          </div>
+          <h4 class="pt-4">Fale com o Suporte</h4>
+          <p>Aqui você irá ser atendido por algum colaborador do suporte. </p>
         </div>
-      </section> <!-- fim da seção 3 colunas-->
+        <div class="col-md-4 mt-4 mb-4 coluna-diferente">
+          <a href="/procedimentos">
+            <img src="/img/procedimentos2.jpg" class="img-fluid">
+          </a>
+          <h4 class="pt-4">Procedimentos do suporte</h4>
+          <p>Aqui você irá tirar dúvidas sobre os procedimentos e em quais circustâncias.</p>
+        </div>
+        <div class="col-md-4 mt-4 mb-4 pt-2 borda2 tres-colunas">
+          <a href="/forum_aberto">
+            <img src="/img/apoio3.png" class="img-fluid">
+          </a>
+          <h4 class="pt-4">Forum</h4>
+          <p>Aqui permite a sua colaboração para InfoToYou, permitindo a troca de conhecimentos sobre os procedimentos
+            do suporte.</p>
+        </div>
+      </div>
+    </div>
+  </section> <!-- fim da seção 3 colunas-->
 
-<%- include('../public/partials/footer.ejs') %>
+  <%- include('../public/partials/footer.ejs') %>

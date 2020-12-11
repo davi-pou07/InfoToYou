@@ -12,6 +12,10 @@ const Forum= connection.define('forum',{
    descricao:{
        type: Sequelize.TEXT,
        allowNull:false
+   },
+   idOp:{
+       type: Sequelize.INTEGER,
+       allowNull:true
    }
 })
 

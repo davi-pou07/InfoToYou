@@ -22,7 +22,7 @@
                         <div class="card-body" id="card-pro">
                             <! -- tras o titulo da pergunta-->
                                 <h4><%=forum_aberto.titulo%></h4>
-                        </div>
+                                <%if(forum_aberto.idOp != 0){%><p>Referencia de operação = <a href="/operacao/<%=forum_aberto.idOp%>">Nº <%=forum_aberto.idOp%></a></p><%}%>
                         <div class="card-footer">
                             <a href="/forum_aberto/<%=forum_aberto.id%>"><button
                                     class="btn botao">Responder</button></a>
