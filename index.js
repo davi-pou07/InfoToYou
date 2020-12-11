@@ -135,19 +135,11 @@ app.get("/forum_operacao/:id",(req,res)=>{
     Procedimento.findOne({
         where: {id:id}
     }).then(procedimento =>{
-       /* Forum.findAll({
-            where:{opId:procedimento.id},
-            order:[
-                ['Id','DESC']
-            ]
-        }).then(forum_operacao =>{*/
         res.render("forum_operacao",{
             procedimento:procedimento
-            //forum_operacao:forum_operacao
         })
     }) 
     })
-//})
 
 
 app.get("/procedimentos",(req,res)=>{
@@ -178,6 +170,9 @@ app.get("/operacao/:id",(req,res) => {
         }
     })
 })
+//teste
+a=Date()
+console.log(a)
 
 app.listen(8080,()=>{
     console.log("Servidor rodando!")
