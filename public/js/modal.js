@@ -1,3 +1,3 @@
-window.onload = function modal() {
-    a=document.getElementById('')
+window.onload = function () {
+    document.getElementById('exampleModal').modal('show');
 }

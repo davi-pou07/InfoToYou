@@ -141,7 +141,9 @@ h2 .enfase{
    margin-bottom: 30px;
    margin-top: 30px;
 }
-
+/*DATA FORUM*/
 .emy{
   text-align: right; 
+  font-size: small;
+  color: rgba(0, 0, 0, 40%);
 }

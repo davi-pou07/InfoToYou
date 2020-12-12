@@ -12,10 +12,6 @@ const Procedimento=connection.define('procedimento',{
         type: Sequelize.TEXT,
        allowNull:false
     },
-    classificacao:{
-        type: Sequelize.INTEGER,
-        allowNull:true
-    }
 })
 Procedimento.sync({force: false}).then(()=>{
     console.log("Tabela Procedimento ok")
