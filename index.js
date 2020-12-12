@@ -174,6 +174,7 @@ app.get("/operacao/:id",(req,res) => {
 a=Date()
 console.log(a)
 
+
 app.listen(8080,()=>{
     console.log("Servidor rodando!")
 })

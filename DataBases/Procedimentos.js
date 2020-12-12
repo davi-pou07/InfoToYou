@@ -11,6 +11,10 @@ const Procedimento=connection.define('procedimento',{
     proc_descricao:{
         type: Sequelize.TEXT,
        allowNull:false
+    },
+    classificacao:{
+        type: Sequelize.INTEGER,
+        allowNull:true
     }
 })
 Procedimento.sync({force: false}).then(()=>{
