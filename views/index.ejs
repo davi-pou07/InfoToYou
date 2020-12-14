@@ -37,44 +37,31 @@
 
       <!-- jquery -->
       <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-      <!-- bootstrap -->
-      <script type="text/javascript" src="js/bootstrap.js"></script>
-      <!-- chamada da função -->
-      <script type="text/javascript">
-        $(window).load(function () {
-          $('#exemplomodal').modal('show');
-        });
-      </script>
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-      </button>
       <script>
         $(document).ready(function () {
           $('#exampleModal').modal('show');
         });
-        // window.onload = function () {
-        //   document.getElementById('exampleModal').modal('show');
-        // }
       </script>
+      
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><h2 class="enfase pt-2 pb-2">Comunicados importantes</h2></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ...
+              <h3>Informamos a todos os colaboradores que a nossa reunião está marcada para o dia 21/12/2020 às 17:00. </h3>
+              <hr>
+              <h3>Já está marcada a atualização do sistema ICompany, dia 09/01/2021.</h3>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
           </div>
         </div>

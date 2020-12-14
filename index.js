@@ -8,6 +8,8 @@ const connection = require('./DataBases/databases')
 //exportando model de ciração de tabelos no banco
 const Forum = require("./DataBases/Forum")
 const Resposta = require("./DataBases/Resposta")
+const Procedimento = require("./DataBases/Procedimentos")
+const Classificacao = require("./DataBases/Classificacao")
 //databases
 connection
     .authenticate()
@@ -17,7 +19,6 @@ connection
     .catch((msgErro)=>{
         console.log(msgErro)
     })
-const Procedimento = require("./DataBases/Procedimentos")
 //databases
 connection
     .authenticate()
@@ -111,7 +112,21 @@ app.get("/forum_aberto/:id",(req,res)=>{
     }) 
     })
 })
-
+//atualizações
+app.get('/atualizacoes',(req,res)=>{
+    res.render('atualizacoes')
+})
+//Classificacao
+app.post('/save_classi',(req,res)=>{
+    classi = req.body.fb
+    id_op = 1
+    Classificacao.create({
+        classi:classi,
+        id_op:id_op
+    }).then(()=>{
+        console.log("-----------------------------------")
+    })
+})
 
 //procedimentos
 
