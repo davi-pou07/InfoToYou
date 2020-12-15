@@ -1,23 +1,23 @@
 <div class="card-footer">
-<p>Qual sua classificacao referente a operação acima?</p>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/classificacao.css">
-<div class="estrelas">
-  <form action="/save_classi" method="POST">
-  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-  <label for="cm_star-1"><i class="fa"></i></label>
-  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-  <label for="cm_star-2"><i class="fa"></i></label>
-  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-  <label for="cm_star-3"><i class="fa"></i></label>
-  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-  <label for="cm_star-4"><i class="fa"></i></label>
-  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-  <label for="cm_star-5"><i class="fa"></i></label>
-  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-</form>
-</div>
-<hr>
-
-<p>Caso necessario, deixe uma observação no <a href="/forum_operacao/<%=procedimentos.id%>">Forum</a></p>
-</div>
+  <p>Qual sua classificacao referente a operação acima?</p>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/classificacao.css">
+  <div class="estrelas">
+    <form action="/save_classi" method="POST">
+      <input type="radio" id="cm_star-empty" name="fb" value="" checked />
+      <label for="cm_star-1"><i class="fa"></i></label>
+      <input type="radio" id="cm_star-1" name="fb" value="1" />
+      <label for="cm_star-2"><i class="fa"></i></label>
+      <input type="radio" id="cm_star-2" name="fb" value="2" />
+      <label for="cm_star-3"><i class="fa"></i></label>
+      <input type="radio" id="cm_star-3" name="fb" value="3" />
+      <label for="cm_star-4"><i class="fa"></i></label>
+      <input type="radio" id="cm_star-4" name="fb" value="4" />
+      <label for="cm_star-5"><i class="fa"></i></label>
+      <input type="radio" id="cm_star-5" name="fb" value="5" />
+      <input type="submit" value="ENVIAR">
+      <input type="hidden" name="id_op" value="<%=procedimentos.id%>">
+    </form>
+  </div>
+  <hr>
+  <p>Caso necessario, deixe uma observação no <a href="/forum_operacao/<%=procedimentos.id%>">Forum</a></p>

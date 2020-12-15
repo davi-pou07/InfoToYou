@@ -119,15 +119,33 @@ app.get('/atualizacoes',(req,res)=>{
 //Classificacao
 app.post('/save_classi',(req,res)=>{
     classi = req.body.fb
-    id_op = 1
+    id_op = req.body.id_op
     Classificacao.create({
         classi:classi,
         id_op:id_op
-    }).then(()=>{
-        console.log("-----------------------------------")
     })
 })
 
+// app.get('/procedimentos',(req,res)=>{
+//     Procedimento.findOne({
+//         where:{id}
+//     }).then(nota =>{
+//         Classificacao.findAll({
+//             where:{id_op:nota.id},
+//             order:[
+//                 ['Id','DESC']
+//             ]
+//         }).then(classifi =>{
+//             if(classifi != undefined){
+//                 res.render('procedimentos',{
+//                     classifi:classifi
+//                 })
+//             }else{
+//                 res.redirect('/')
+//             }
+//         })
+//     })
+// })
 //procedimentos
 
 app.post('/save_op',(req,res)=>{
