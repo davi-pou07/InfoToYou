@@ -1,8 +1,8 @@
 //Estou dizendo para ele criar uma variavel que requisita o expres e declaro uma variavel app que chama a função do express
 const express = require('express')
-const app=express()
+const app = express()
 //Estou configurando o bodyParser que é o que tras os dadso inseridos no formulario
-const bodyParser=require("body-parser")
+const bodyParser = require("body-parser")
 //Exportando conexão
 const connection = require('./DataBases/databases')
 //exportando model de ciração de tabelos no banco
@@ -13,56 +13,56 @@ const Classificacao = require("./DataBases/Classificacao")
 //databases
 connection
     .authenticate()
-    .then(()=>{
+    .then(() => {
         console.log("Conexão feita com sucesso")
     })
-    .catch((msgErro)=>{
+    .catch((msgErro) => {
         console.log(msgErro)
     })
 //databases
 connection
     .authenticate()
-    .then(()=>{
+    .then(() => {
         console.log("Conexão feita com sucesso")
     })
-    .catch((msgErro)=>{
+    .catch((msgErro) => {
         console.log(msgErro)
     })
 //usar o EJS como view engine | renderizador de html
-app.set('view engine','ejs')
+app.set('view engine', 'ejs')
 //Carregamento de arquivos estaticos no express
-app.use(express.static('public')) 
+app.use(express.static('public'))
 //Carregamento do bodyPerser
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //Rotas
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     //Informa variavéis que irão ser apresentadas no inde   
-        res.render("index");
+    res.render("index");
 })
 
-app.get("/comunicados",(req,res)=>{
+app.get("/comunicados", (req, res) => {
     res.render('comunicados.ejs')
 })
 
-app.get("/guiadoiniciante",(req,res)=>{
+app.get("/guiadoiniciante", (req, res) => {
     res.render('guiadoiniciante.ejs')
 })
 
 //Rota do BANCO forum
-app.get("/forum",(req,res)=>{
+app.get("/forum", (req, res) => {
     res.render("forum")
 })
 
-app.post("/save",(req,res)=>{
-    titulo=req.body.titulo
+app.post("/save", (req, res) => {
+    titulo = req.body.titulo
     idOp = 0
-    descricao=req.body.descricao //Inserir dados a tabela -> insert into pergunta titulo, descrição (xxx,xxx)
+    descricao = req.body.descricao //Inserir dados a tabela -> insert into pergunta titulo, descrição (xxx,xxx)
     Forum.create({
-        titulo:titulo,
-        descricao:descricao,
-        idOp:idOp
+        titulo: titulo,
+        descricao: descricao,
+        idOp: idOp
         //Apos receber os dadso usuario sera redirecionado a pagina inicial
     }).then(() => {
         res.redirect("/forum_aberto");
@@ -71,143 +71,145 @@ app.post("/save",(req,res)=>{
 
 //Rotas banco Resposta
 
-app.post("/responder",(req,res)=>{
+app.post("/responder", (req, res) => {
     var corpo = req.body.corpo
     var perguntaId = req.body.resposta
     Resposta.create({
-        corpo:corpo,
-        perguntaId:perguntaId
-    }).then(()=>{
-        res.redirect("/forum_aberto/"+perguntaId)
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(() => {
+        res.redirect("/forum_aberto/" + perguntaId)
     })
 })
 
-app.get("/forum_aberto",(req,res)=>{
+app.get("/forum_aberto", (req, res) => {
     Forum.findAll({
-        raw:true,order:[
-            ['id','DESC']
+        raw: true, order: [
+            ['id', 'DESC']
         ]
-}).then(forum_aberto => {
-    res.render('forum_aberto',{
-        forum_aberto:forum_aberto
+    }).then(forum_aberto => {
+        res.render('forum_aberto', {
+            forum_aberto: forum_aberto
+        })
     })
-}) 
 })
 
-app.get("/forum_aberto/:id",(req,res)=>{
+app.get("/forum_aberto/:id", (req, res) => {
     var id = req.params.id
     Forum.findOne({
-        where: {id:id}
-    }).then(forum_aberto =>{
+        where: { id: id }
+    }).then(forum_aberto => {
         Resposta.findAll({
-            where:{perguntaId:forum_aberto.id},
-            order:[
-                ['Id','DESC']
+            where: { perguntaId: forum_aberto.id },
+            order: [
+                ['Id', 'DESC']
             ]
-        }).then(resposta =>{
-        res.render("resposta",{
-            forum_aberto:forum_aberto,
-            resposta:resposta
+        }).then(resposta => {
+            res.render("resposta", {
+                forum_aberto: forum_aberto,
+                resposta: resposta
+            })
         })
-    }) 
     })
 })
 //atualizações
-app.get('/atualizacoes',(req,res)=>{
+app.get('/atualizacoes', (req, res) => {
     res.render('atualizacoes')
 })
 //Classificacao
-app.post('/save_classi',(req,res)=>{
+app.post('/save_classi', (req, res) => {
     classi = req.body.fb
     id_op = req.body.id_op
     Classificacao.create({
-        classi:classi,
-        id_op:id_op
+        classi: classi,
+        id_op: id_op
     })
 })
 
-// app.get('/procedimentos',(req,res)=>{
-//     Procedimento.findOne({
-//         where:{id}
-//     }).then(nota =>{
+// app.get('/procedimentos', (req, res) => {
+//     var id = procedimento.id
+//     Classificacao.findOne({
+//         raw: true, order: [
+//             ['id', 'DESC']
+//         ]
+//     }).then(proce => {
 //         Classificacao.findAll({
-//             where:{id_op:nota.id},
-//             order:[
-//                 ['Id','DESC']
-//             ]
-//         }).then(classifi =>{
-//             if(classifi != undefined){
-//                 res.render('procedimentos',{
-//                     classifi:classifi
+//             where: { id_op: proce.id }
+//         }).then(classifi => {
+//             if (classifi != undefined) {
+//                 res.render("procedimentos", {
+//                     classifi: classifi,
+//                     proce: proce
 //                 })
-//             }else{
+//             } else {
 //                 res.redirect('/')
 //             }
 //         })
 //     })
 // })
-//procedimentos
 
-app.post('/save_op',(req,res)=>{
-    titulo=req.body.titulo
+
+app.post('/save_op', (req, res) => {
+    titulo = req.body.titulo
     idOp = req.body.resposta
     descricao = req.body.descricao
 
     Forum.create({
-        titulo:titulo,
-        descricao:descricao,
-        idOp:idOp
-    }).then(()=>{
+        titulo: titulo,
+        descricao: descricao,
+        idOp: idOp
+    }).then(() => {
         res.redirect("/forum_aberto")
     })
 })
 
 
-app.get("/forum_operacao/:id",(req,res)=>{
+app.get("/forum_operacao/:id", (req, res) => {
     var id = req.params.id
     Procedimento.findOne({
-        where: {id:id}
-    }).then(procedimento =>{
-        res.render("forum_operacao",{
-            procedimento:procedimento
+        where: { id: id }
+    }).then(procedimento => {
+        res.render("forum_operacao", {
+            procedimento: procedimento
         })
-    }) 
     })
-
+})
 
 app.get("/procedimentos",(req,res)=>{
     Procedimento.findAll({
         raw:true,order:[
             ['id','DESC']
         ]
-    }).then(procedimentos =>{
+    }).then(procedimentos => {
         res.render("procedimentos",{
-            procedimentos:procedimentos
+            procedimentos:procedimentos,
+        })
         })
     })
-    
-})
 
-app.get("/operacao/:id",(req,res) => {
+app.get('procedimentos/?')
+
+
+app.get("/operacao/:id", (req, res) => {
     var id = req.params.id
 
     Procedimento.findOne({
-        where:{id:id}
-    }).then(procedimentos=>{
-        if(procedimentos != undefined){
-            res.render("operacao",{
-            procedimentos:procedimentos
-        })
-        }else{
+        where: { id: id }
+    }).then(procedimentos => {
+        if (procedimentos != undefined) {
+            res.render("operacao", {
+                procedimentos: procedimentos
+            })
+        } else {
             res.redirect('/forum')
         }
     })
 })
 //teste
-a=Date()
+a = Date()
 console.log(a)
 
 
-app.listen(8080,()=>{
+app.listen(8080, () => {
     console.log("Servidor rodando!")
 })
