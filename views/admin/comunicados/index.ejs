@@ -1,0 +1,67 @@
+<%- include('../../../public/partials/header.ejs')%>
+
+    <%- include('../../../public/partials/nav.ejs')%>
+
+        <div class="container">
+            <hr>
+            <h2>Comunicados</h2>
+            <a href="/admin/comunicados/new" class='btn btn-success'>Criar novo comunicado</a>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Comunicado</th>
+                        <th>Status</th>
+                        <th style="text-align: end;">Ações</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% comunicados.forEach(comunicados=>{ %>
+                        <tr>
+                            <th>
+                                <%=comunicados.id %>
+                            </th>
+                            <th>
+                                <%=comunicados.titulo %>
+                            </th>
+                            <th>
+                                <%=comunicados.comunicado %>
+                            </th>
+                            <th>
+                                <%=comunicados.status %>
+                            </th>
+                            <th>
+                                <a href="/admin/comunicados/edit/ <%= comunicados.id %>"
+                                    class="btn btn-warning">Editar</a>
+                            <th>
+                                <form method="POST" action="/comunicados/delete" style="display: inline;"
+                                    onsubmit="confirmarDelecao(event,this)">
+                                    <input type="hidden" name="id" value="<%=comunicados.id%>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            </th>
+
+                            </th>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <%- include('../../../public/partials/footer-.ejs')%>
+            <script>
+                function confirmarDelecao(event, form) {
+                    //Não deixa enviar o formulario
+                    event.preventDefault();
+                    var decision = confirm("Você quer deletar esse aviso?")
+                    if (decision) {
+                        //Manda o formulario -- o This dentro de um evento em tml você esta referenciando o formulrio em sim
+                        form.submit()
+                    } else {
+
+                    }
+                }
+            </script>

@@ -10,15 +10,8 @@ const Forum = require("./DataBases/Forum")
 const Resposta = require("./DataBases/Resposta")
 const Procedimento = require("./DataBases/Procedimentos")
 const Classificacao = require("./DataBases/Classificacao")
-//databases
-connection
-    .authenticate()
-    .then(()=>{
-        console.log("Conexão feita com sucesso")
-    })
-    .catch((msgErro)=>{
-        console.log(msgErro)
-    })
+const Comunicados = require('./DataBases/Comunicados')
+const comunicados = require('./admin/comunicados')
 //databases
 connection
     .authenticate()
@@ -36,6 +29,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
+app.use('/',comunicados)
 //Rotas
 app.get("/",(req,res)=>{
     //Informa variavéis que irão ser apresentadas no inde   
@@ -43,7 +37,10 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/comunicados",(req,res)=>{
-    res.render('comunicados.ejs')
+    Comunicados.findAll().then(comunicados =>{
+        res.render('comunicados.ejs',{comunicados:comunicados})
+    })
+    
 })
 
 app.get("/guiadoiniciante",(req,res)=>{

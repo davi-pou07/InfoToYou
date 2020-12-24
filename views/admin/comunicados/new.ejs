@@ -1,0 +1,30 @@
+<%- include('../../../public/partials/header.ejs')%>
+
+    <%- include('../../../public/partials/nav.ejs')%>
+<body>
+        <div class="container">
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Cadatro de comunicados</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/comunicados/save">
+                        <input class="form-control" type="text" name="titulo"
+                            placeholder="Defina o título de seu comunicado">
+                            <br>
+                            <textarea class="form-control" name="body" placeholder="Escreva o comunicado aqui"
+                            id="article"></textarea>
+                            <select name="status">
+                                <option value="Ativado">Ativado</option>
+                                <option value="Desativado">Desativado</option>
+                            </select>
+                            <br>
+                            <br>
+                        <button class="btn btn-success">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../../../public/partials/footer-.ejs')%>
