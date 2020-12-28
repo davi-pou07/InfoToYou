@@ -15,8 +15,18 @@ const Comunicador= connection.define('comunicados',{
     status:{
         type: Sequelize.STRING,
         allowNull:true
+    },
+    importancia:{
+        type: Sequelize.STRING,
+        allowNull:true
+    },
+    dataDeExpiracao:{
+        type: Sequelize.DATE,
+        allowNull:true
     }  
 })
+
+//importancia e data de expiração
 
 Comunicador.sync({force: false}).then(()=>{
     console.log("Tabela Comunicados ok")

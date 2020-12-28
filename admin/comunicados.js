@@ -1,5 +1,6 @@
 //Criação de rotas de outro arquivo JS para mandar para a index
 const express = require('express')
+const { data } = require('jquery')
 const Classificacao = require('../DataBases/Classificacao')
 const Comunicados = require('../DataBases/Comunicados')
 const router = express.Router()
@@ -17,11 +18,15 @@ router.post('/comunicados/save',(req,res)=>{
     var titulo = req.body.titulo
     var comunicados = req.body.body
     var status = req.body.status
+    var importancia = req.body.importancia
+    var dataExp = req.body.dataExp
     if(titulo != undefined){
         Comunicados.create({
             titulo:titulo,
             comunicado:comunicados,
-            status:status
+            status:status,
+            importancia:importancia,
+            dataDeExpiracao:dataExp
         }).then(()=>{
             res.redirect("/admin/comunicados")
         })
@@ -65,7 +70,9 @@ router.post("/comunicados/update",(req,res)=>{
     var titulo = req.body.titulo
     var comunicado = req.body.body
     var status = req.body.status
-    Comunicados.update ({titulo:titulo, comunicado:comunicado, status:status},{ 
+    var importancia = req.body.importancia
+    var dataExp = req.body.dataExp
+    Comunicados.update ({titulo:titulo, comunicado:comunicado, status:status,importancia:importancia,dataDeExpiracao:dataExp},{ 
         where: {
             id:id
         }

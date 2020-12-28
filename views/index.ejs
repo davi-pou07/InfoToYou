@@ -56,9 +56,11 @@
               </button>
             </div>
             <div class="modal-body">
-              <h3>Informamos a todos os colaboradores que a nossa reunião está marcada para o dia 21/12/2020 às 17:00. </h3>
+              <%comunicados.forEach(comunicado=>{%>
+              <h2><%= comunicado.titulo%></h2>
+              <h4><%= comunicado.comunicado%></h4>
               <hr>
-              <h3>Já está marcada a atualização do sistema ICompany, dia 09/01/2021.</h3>
+              <%})%>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

@@ -15,12 +15,19 @@
                             <br>
                             <textarea class="form-control" name="body" placeholder="Escreva o comunicado aqui"
                             id="article"></textarea>
-                            <select name="status">
+                            <p>Informe o status desse comunicado abaixo:</p>
+                            <select name="status" class="form-control">
                                 <option value="Ativado">Ativado</option>
                                 <option value="Desativado">Desativado</option>
                             </select>
-                            <br>
-                            <br>
+                            <p>Informe a importancia desse comunicado:</p>
+                            <select name="importancia" class="form-control">
+                                <option value="normal">normal</option>
+                                <option value="alta">alta</option>
+                            </select>
+                            <p>Informe a data e hora de expiração:</p>
+                            <input name="dataExp" type="date">
+                            <br><br>
                         <button class="btn btn-success">Cadastrar</button>
                     </form>
                 </div>

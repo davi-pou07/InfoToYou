@@ -14,6 +14,8 @@
                         <th>Titulo</th>
                         <th>Comunicado</th>
                         <th>Status</th>
+                        <th>Importancia</th>
+                        <th>Data de Exp.</th>
                         <th style="text-align: end;">Ações</th>
                         <th></th>
                     </tr>
@@ -32,6 +34,12 @@
                             </th>
                             <th>
                                 <%=comunicados.status %>
+                            </th>
+                            <th>
+                                <%=comunicados.importancia %>
+                            </th>
+                            <th>
+                                <%=comunicados.dataDeExpiracao %>
                             </th>
                             <th>
                                 <a href="/admin/comunicados/edit/ <%= comunicados.id %>"

@@ -43,8 +43,13 @@ app.use(bodyParser.json())
 app.use('/',comunicados)
 //Rotas
 app.get("/", (req, res) => {
+    Comunicados.findAll({
+        where:{importancia:'alta'}
+    }).then(comunicados =>{
+        res.render("index",{comunicados:comunicados});
+    })
     //Informa variavéis que irão ser apresentadas no inde   
-    res.render("index");
+    
 })
 
 app.get("/comunicados",(req,res)=>{

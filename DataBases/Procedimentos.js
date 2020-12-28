@@ -12,6 +12,10 @@ const Procedimento=connection.define('procedimento',{
         type: Sequelize.TEXT,
        allowNull:false
     },
+    slug: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 })
 Procedimento.sync({force: false}).then(()=>{
     console.log("Tabela Procedimento ok")

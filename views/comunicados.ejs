@@ -43,8 +43,10 @@
           </div>
         </div>
       </section> <!-- fim da home-->
+
       <% var count=0; %>
         <%comunicados.forEach(comunicado=>{%>
+          <%if (comunicado.status != 'Desativado') {%>
           <%if(count%2===0){%>
             <%count++;%>
               <section class="caixa">
@@ -88,5 +90,5 @@
                       </div>
                     </div>
                   </section> <!-- fim da seção comunicados-->
-                  <%}})%>
+                  <%}}})%>
                     <%- include('../public/partials/footer.ejs') %>
