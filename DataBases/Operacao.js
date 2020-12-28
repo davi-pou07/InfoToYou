@@ -6,7 +6,7 @@ const connection = require("./databases")
 const Procedimento = require('./Procedimentos')
 
 const Operacao =  connection.define('operacaos',{
-    title:{
+    titulo:{
         type: Sequelize.STRING,
         allowNull: false
         //Slug é o nome editavel que sairia o titulo para ultilizar na rota por exemplo
@@ -14,7 +14,7 @@ const Operacao =  connection.define('operacaos',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    body:{
+    corpo:{
         type: Sequelize.TEXT,
         allowNull: false
     }
@@ -26,6 +26,7 @@ Operacao.belongsTo(Procedimento) //Um artigo pertence a uma categoria
 
 //Arquivo foi removido para não tentar criar toda vez que o projeto rodar
 //Sinconizar o model de relacionamento com as tabela no banco
-Operacao.sync({force:true})//Criar a minha tabela sempre que eu criar a minha aplicação
-
+Operacao.sync({force: false}).then(()=>{
+    console.log("Tabela Operação ok")//Criar a minha tabela sempre que eu criar a minha aplicação
+})
 module.exports= Operacao

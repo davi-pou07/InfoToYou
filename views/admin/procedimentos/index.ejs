@@ -1,0 +1,59 @@
+<%- include('../../../public/partials/header.ejs')%>
+
+    <%- include('../../../public/partials/nav.ejs')%>
+
+        <div class="container">
+            <hr>
+            <h2>Procedimentos</h2>
+            <a href="/admin/comunicados/new" class='btn btn-success'>Criar novo comunicado</a>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Descrição</th>
+                        <th>Status</th>
+                        <th>slug</th>
+                        <th style="text-align: end;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        <tr>
+                            <th>
+                                id
+                            </th>
+                            <th>
+                                titulo
+                            </th>
+                            <th>
+                                descricao
+                            </th>
+                            <th>
+                                status
+                            </th>
+                            <th>
+                                slug
+                            </th>
+                            <th>
+                                </form>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <%- include('../../../public/partials/footer-.ejs')%>
+            <script>
+                function confirmarDelecao(event, form) {
+                    //Não deixa enviar o formulario
+                    event.preventDefault();
+                    var decision = confirm("Você quer deletar esse aviso?")
+                    if (decision) {
+                        //Manda o formulario -- o This dentro de um evento em tml você esta referenciando o formulrio em sim
+                        form.submit()
+                    } else {
+
+                    }
+                }
+            </script>

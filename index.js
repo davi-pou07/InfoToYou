@@ -10,7 +10,7 @@ const Forum = require("./DataBases/Forum")
 const Resposta = require("./DataBases/Resposta")
 const Procedimento = require("./DataBases/Procedimentos")
 const Classificacao = require("./DataBases/Classificacao")
-
+const Operacao = require("./DataBases/Operacao")
 const Comunicados = require('./DataBases/Comunicados')
 const comunicados = require('./admin/comunicados')
 
