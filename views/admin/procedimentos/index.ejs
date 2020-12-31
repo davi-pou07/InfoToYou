@@ -5,7 +5,7 @@
         <div class="container">
             <hr>
             <h2>Procedimentos</h2>
-            <a href="/admin/comunicados/new" class='btn btn-success'>Criar novo comunicado</a>
+            <a href="/admin/procedimentos/new" class='btn btn-success'>Criar novo comunicado</a>
             <hr>
             <table class="table">
                 <thead>
@@ -13,32 +13,34 @@
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Descrição</th>
-                        <th>Status</th>
+                        <th>Nivel</th>
                         <th>slug</th>
                         <th style="text-align: end;">Ações</th>
                     </tr>
                 </thead>
+
                 <tbody>
-                   
+                   <%procedimentos.forEach(procedimento=>{%>
                         <tr>
                             <th>
-                                id
+                                <%=procedimento.id%>
                             </th>
                             <th>
-                                titulo
+                                <%=procedimento.proc_titulo%>
                             </th>
                             <th>
-                                descricao
+                                <%=procedimento.descricao%>
                             </th>
                             <th>
-                                status
+                                <%=procedimento.nivel%>
                             </th>
                             <th>
-                                slug
+                                <%=procedimento.slug%>
                             </th>
                             <th>
                                 </form>
                         </tr>
+                        <%})%>
                 </tbody>
             </table>
         </div>

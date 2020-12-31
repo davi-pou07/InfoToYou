@@ -15,6 +15,10 @@ const Procedimento=connection.define('procedimento',{
     slug: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    nivel:{
+        type:Sequelize.INTEGER,
+        allowNull:true
     }
 })
 Procedimento.sync({force: false}).then(()=>{

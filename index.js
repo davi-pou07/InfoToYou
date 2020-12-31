@@ -9,6 +9,7 @@ const connection = require('./DataBases/databases')
 const Forum = require("./DataBases/Forum")
 const Resposta = require("./DataBases/Resposta")
 const Procedimento = require("./DataBases/Procedimentos")
+const procedimentos = require("./admin/procedimentos")
 const Classificacao = require("./DataBases/Classificacao")
 const Operacao = require("./DataBases/Operacao")
 const Comunicados = require('./DataBases/Comunicados')
@@ -41,6 +42,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/',comunicados)
+app.use("/",procedimentos)
 //Rotas
 app.get("/", (req, res) => {
     Comunicados.findAll({
@@ -203,8 +205,6 @@ app.get("/procedimentos",(req,res)=>{
         })
         })
     })
-
-app.get('procedimentos/?')
 
 
 app.get("/operacao/:id", (req, res) => {
