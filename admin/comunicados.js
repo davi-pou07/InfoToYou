@@ -1,6 +1,7 @@
 //Criação de rotas de outro arquivo JS para mandar para a index
 const express = require('express')
 const { data } = require('jquery')
+const Sequelize = require("sequelize")
 const Classificacao = require('../DataBases/Classificacao')
 const Comunicados = require('../DataBases/Comunicados')
 const router = express.Router()
@@ -99,6 +100,17 @@ router.post("/comunicados/delete", (req,res)=>{
         res.redirect("/admin/comunicados")
     }
 })
+
+// router.get("/comunicados/valid",(req,res) =>{
+//         Comunicados.update({
+//             status: 'Desativado'  
+//         },{where:{
+//             dataDeExpiracao: Sequelize.literal('NOW()')
+//         }}).then(()=>{
+//             res.redirect("/admin/comunicados")
+//         })
+//     })
+
 
 
 
