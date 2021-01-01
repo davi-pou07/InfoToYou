@@ -1,0 +1,33 @@
+<%- include('../../../public/partials/header.ejs')%>
+
+<%- include('../../../public/partials/nav.ejs')%>
+
+        <body>
+            <div class="container">
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Cadatro de Procedimentos</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/procedimentos/save">
+                            <input class="form-control" type="text" name="proc_titulo"
+                                placeholder="Defina o título de seu procedimentos">
+                                <br>
+                                <textarea class="form-control" name="proc_descricao" placeholder="Escreva a descrição do seu predimento aqui"
+                                id="article"></textarea>
+                                <p>Informe o Nivel desse procedimento abaixo:</p>
+                                <select name="nivel" class="form-control">
+                                    <option value="1">1 - A definir</option>
+                                    <option value="2">2- A definir</option>
+                                    <option value="3">3- A definir</option>
+                                    <option value="4">4- A definir</option>
+                                    <option value="5">5- A definir</option>
+                                </select>
+                                <br><br>
+                            <button class="btn btn-success">Cadastrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <%- include('../../../public/partials/footer-.ejs')%>
