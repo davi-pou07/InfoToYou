@@ -43,6 +43,9 @@ app.use(bodyParser.json())
 
 app.use('/',comunicados)
 app.use("/",procedimentos)
+app.get("/admin",(req,res)=>{
+    res.render("admin/admin/ad.ejs")
+})
 //Rotas
 app.get("/", (req, res) => {
     Comunicados.findAll({

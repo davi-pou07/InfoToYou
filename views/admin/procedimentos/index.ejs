@@ -5,7 +5,7 @@
         <div class="container">
             <hr>
             <h2>Procedimentos</h2>
-            <a href="/admin/procedimentos/new" class='btn btn-success'>Criar novo comunicado</a>
+            <a href="/admin/procedimentos/new" class='btn btn-success'>Criar novo procedimento</a>
             <hr>
             <table class="table">
                 <thead>
@@ -29,7 +29,7 @@
                                 <%=procedimento.proc_titulo%>
                             </th>
                             <th>
-                                <%=procedimento.descricao%>
+                                <%=procedimento.proc_descricao%>
                             </th>
                             <th>
                                 <%=procedimento.nivel%>
@@ -38,8 +38,17 @@
                                 <%=procedimento.slug%>
                             </th>
                             <th>
+                                <a href="/admin/procedimentos/edit/ <%= procedimento.id %>" class="btn btn-warning">Editar</a>
+                            </form>
+                            <th>
+                                <form action="/procedimento/delete" method="POST" style="display: inline;" onsubmit="confirmarDelecao(event,this)">
+                                <input type="hidden" name="id" value="<%=procedimento.id%>">
+                                <button class="btn btn-danger">Deletar</button> 
+                                </form> 
+                            </th>
                                 </form>
                         </tr>
+                        
                         <%})%>
                 </tbody>
             </table>
@@ -50,7 +59,7 @@
                 function confirmarDelecao(event, form) {
                     //Não deixa enviar o formulario
                     event.preventDefault();
-                    var decision = confirm("Você quer deletar esse aviso?")
+                    var decision = confirm("Você quer deletar esse procedimento?")
                     if (decision) {
                         //Manda o formulario -- o This dentro de um evento em tml você esta referenciando o formulrio em sim
                         form.submit()

@@ -39,7 +39,7 @@ router.post('/comunicados/save',(req,res)=>{
 
 router.get('/admin/comunicados',(req,res)=>{
     Comunicados.findAll().then(comunicados =>{
-        res.render('admin/procedimentos/index',{
+        res.render('admin/comunicados/index',{
             comunicados: comunicados
         })
     })
