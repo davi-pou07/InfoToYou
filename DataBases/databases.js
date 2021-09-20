@@ -2,9 +2,9 @@
 const Sequelize = require('sequelize')
 
 //Criar coneão com banco
-const connection = new Sequelize('infotoyou', 'root', 'davi6259', {
+const connection = new Sequelize('infotoyou', 'postgres', 'davi6259', {
   host: 'localhost',
-  dialect: 'mysql',
+  dialect: 'postgres',
   timezone: '-03:00' // for writing to database
 })
 
